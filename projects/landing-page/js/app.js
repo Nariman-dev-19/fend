@@ -1,3 +1,4 @@
+'use strict';
 /**
  *
  * Manipulating the DOM exercise.
@@ -18,6 +19,8 @@
  *
 */
 
+var navbarList = document.getElementById('navbar__list');
+var sections = document.getElementsByTagName('section');
 
 /**
  * End Global Variables
@@ -35,6 +38,14 @@
 
 // build the nav
 
+for (let i = 0; i < sections.length; i++) {
+    let li_ = document.createElement('li');
+    let a_ = document.createElement('a');
+    a_.href = '#' + sections[i].id;
+    a_.textContent = sections[i].dataset.nav;
+    li_.appendChild(a_);
+    navbarList.appendChild(li_);
+}
 
 // Add class 'active' to section when near top of viewport
 
