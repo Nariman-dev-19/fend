@@ -67,6 +67,48 @@ document.addEventListener('click', () => window.scrollTo(0, 0));
 // Build menu 
 
 // Scroll to section on link click
+// Detect section visible in viewport
+
+function isSectionVisibleInViewport(id) {
+    let section = document.getElementById(id);
+    let bounding = section.getBoundingClientRect();
+    let sectionHeight = section.offsetHeight;
+    let sectionWidth = section.offsetWidth;
+
+    if (
+        bounding.top >= -sectionHeight &&
+        bounding.left >= -sectionWidth &&
+        bounding.right <=
+        (window.innerWidth || document.documentElement.clientWidth) +
+        sectionWidth &&
+        bounding.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) +
+        sectionHeight
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Set section intersection observer
+var observer = new IntersectionObserver(
+    function (entries) {
+        if (entries[0].isIntersecting === true) {
+            entries[0].target.classList.add('your-active-class');
+        } else {
+            entries[0].target.classList.remove('your-active-class');
+        }
+
+    },
+    { threshold: [0.5] }
+);
+
+for (let i = 0; i < sections.length; i++) {
+    observer.observe(sections[i]);
+}
+
+
 
 // Set sections as active
 
