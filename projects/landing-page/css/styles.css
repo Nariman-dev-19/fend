@@ -60,6 +60,14 @@ section {
     min-height: 80vh;
 }
 
+#scroll-to-top {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+}
 
 /* ---- Module Rules ---- */
 
